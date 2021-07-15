@@ -19,7 +19,7 @@ export default function Home() {
 				<PricingCard
 					primary
 					tag={"APPLICATION UI + MARKETING"}
-					price={"189"}
+					price={"£189"}
 					vat={"(+£37.80 VAT)"}></PricingCard>
 				<PricingCard
 					tag={"MARKETING"}
