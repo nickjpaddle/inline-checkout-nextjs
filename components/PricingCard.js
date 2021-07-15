@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Link from "next/link";
 
 const PricingCard = (props) => {
 	return (
@@ -9,7 +10,9 @@ const PricingCard = (props) => {
 				<Price>{props.price}</Price>
 				<VAT>{props.vat}</VAT>
 			</HeaderWrapper>
-			<Button>Get this package</Button>
+			<Link href={"/checkout"} passHref>
+				<Button>Get this package</Button>
+			</Link>
 		</Container>
 	);
 };
