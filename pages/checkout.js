@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Checkout() {
 	const [prices, setPrices] = useState();
-	const [progress, setProgress] = useState("Email");
+	const [progress, setProgress] = useState("Email Step");
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -14,9 +14,9 @@ export default function Checkout() {
 			vendor: 2712,
 			eventCallback: function (data) {
 				if (data.event === "Checkout.Login") {
-					setProgress("Address");
+					setProgress("Address Step");
 				} else if (data.event === "Checkout.Location.Submit") {
-					setProgress("Payment");
+					setProgress("Payment Step");
 				}
 			},
 		});
