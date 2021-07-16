@@ -5,6 +5,7 @@ import Image from "next/image";
 export default function Checkout() {
 	const [prices, setPrices] = useState();
 	const [progress, setProgress] = useState("Email");
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const Paddle = window.Paddle;
@@ -13,7 +14,7 @@ export default function Checkout() {
 			vendor: 2712,
 			eventCallback: function (data) {
 				if (data.event === "Checkout.Login") {
-					setProgress("Adress");
+					setProgress("Address");
 				} else if (data.event === "Checkout.Location.Submit") {
 					setProgress("Payment");
 				}
@@ -30,6 +31,9 @@ export default function Checkout() {
 			frameInitialHeight: 416,
 			frameStyle:
 				"width:100%; min-width:286px; background-color: transparent; border: none;",
+			loadCallback: () => {
+				setLoading(false);
+			},
 		});
 
 		Paddle.Product.Prices(13941, function (rawPrices) {
@@ -42,6 +46,7 @@ export default function Checkout() {
 			<LeftPane>
 				<CheckoutWrapper>
 					<div>{progress}</div>
+					<div>{loading === false ? "not loading" : "loading"}</div>
 					<Image
 						src="/tailwindui-logo-on-white.svg"
 						alt="logo"
